@@ -1,288 +1,425 @@
-# Student Information System
+# 🎓 Student Information System (SIS)# 🎓 Student Information System (SIS)
 
-A comprehensive Java-based Student Information System with a beautiful GUI built using Swing/AWT and MySQL database.
 
-## 📋 Table of Contents
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Project Structure](#project-structure)
-- [Prerequisites](#prerequisites)
-- [Installation & Setup](#installation--setup)
-- [How to Run](#how-to-run)
-- [Default Login Credentials](#default-login-credentials)
-- [System Features](#system-features)
-- [Code Explanation](#code-explanation)
-- [Database Schema](#database-schema)
 
----
+A Java-based Student Information System with role-based login, beautiful Swing GUI, and MySQL database.A Java-based Student Information System with role-based login, beautiful Swing GUI, and MySQL database.
 
-## ✨ Features
 
-### Core Features
-- **User Authentication System** - Secure login with role-based access (Admin, Teacher, Student)
-- **Student Management** - Add, edit, delete, and view student records
-- **Teacher Management** - Complete CRUD operations for teacher information
-- **Course Management** - Manage courses with teacher assignments
-- **Profile Management** - Users can view and edit their own profiles
-- **Beautiful UI** - Modern gradient design with intuitive navigation
-- **Responsive Layout** - Clean and organized interface
 
-### User Roles
-1. **Admin** - Full access to all management features
-2. **Teacher** - Can manage courses and view student information
-3. **Student** - Can view their profile and course information
+## ✨ Features## ✨ Features
 
----
 
-## 🛠 Technologies Used
 
-- **Programming Language**: Java (JDK 8 or higher)
-- **GUI Framework**: Java Swing & AWT
-- **Database**: MySQL
-- **JDBC**: MySQL Connector/J for database connectivity
-- **Design Pattern**: DAO (Data Access Object) pattern
-- **Architecture**: MVC-inspired layered architecture
+- **Role-Based Login** - Admin, Teacher, and Student access levels- **Role-Based Login** - Admin, Teacher, and Student access levels
 
----
+- **Auto User Creation** - New students/teachers automatically get login accounts  - **Auto User Creation** - New students/teachers automatically get login accounts
 
-## 📁 Project Structure
+- **Student Management** - Add, edit, delete, and search student records- **Student Management** - Add, edit, delete, and search student records
 
-```
-Java lab/
-│
-├── Main.java                          # Application entry point
-├── schema.sql                         # Database schema file
-│
-├── database/
-│   └── DatabaseConnection.java        # Database connection utility
-│
-├── models/                            # Data models (POJOs)
-│   ├── User.java                      # User model
-│   ├── Student.java                   # Student model
-│   ├── Teacher.java                   # Teacher model
-│   └── Course.java                    # Course model
-│
-├── dao/                               # Data Access Objects
-│   ├── UserDAO.java                   # User database operations
-│   ├── StudentDAO.java                # Student database operations
-│   ├── TeacherDAO.java                # Teacher database operations
-│   └── CourseDAO.java                 # Course database operations
-│
-└── ui/                                # User Interface components
-    ├── LoginFrame.java                # Login window
-    ├── DashboardFrame.java            # Main dashboard
-    ├── StudentManagementPanel.java    # Student management UI
+- **Teacher Management** - Complete teacher information management- **Teacher Management** - Complete teacher information management
+
+- **Course Management** - Manage courses with teacher assignments- **Course Management** - Manage courses with teacher assignments
+
+- **Profile & Password** - Users can edit profile and change passwords- **Profile & Password** - Users can edit profile and change passwords
+
+- **Beautiful UI** - Modern gradient design with color-coded buttons- **Beautiful UI** - Modern gradient design with color-coded buttons
+
+
+
+------
+
+
+
+## 🛠 Technologies## 🛠 Technologies
+
+
+
+- **Java** - JDK 8+ with Swing/AWT- **Java** - JDK 8+ with Swing/AWT
+
+- **MySQL** - Database server- **MySQL** - Database server
+
+- **JDBC** - MySQL Connector/J 9.5.0- **JDBC** - MySQL Connector/J 9.5.0
+
+- **Design Pattern** - DAO (Data Access Object)- **Design Pattern** - DAO (Data Access Object)
+
+
+
+------
+
+
+
+## 📁 Project Structure## 📁 Project Structure
+
+
+
+``````
+
+├── Main.java                          # Application entry pointJava lab/
+
+├── database/│
+
+│   └── DatabaseConnection.java        # Database connection manager├── Main.java                          # Application entry point
+
+├── models/├── schema.sql                         # Database schema file
+
+│   ├── User.java                      # User model│
+
+│   ├── Student.java                   # Student model├── database/
+
+│   ├── Teacher.java                   # Teacher model│   └── DatabaseConnection.java        # Database connection utility
+
+│   └── Course.java                    # Course model│
+
+├── dao/├── models/                            # Data models (POJOs)
+
+│   ├── UserDAO.java                   # User database operations│   ├── User.java                      # User model
+
+│   ├── StudentDAO.java                # Student database operations│   ├── Student.java                   # Student model
+
+│   ├── TeacherDAO.java                # Teacher database operations│   ├── Teacher.java                   # Teacher model
+
+│   └── CourseDAO.java                 # Course database operations│   └── Course.java                    # Course model
+
+└── ui/│
+
+    ├── LoginFrame.java                # Login window├── dao/                               # Data Access Objects
+
+    ├── DashboardFrame.java            # Main dashboard│   ├── UserDAO.java                   # User database operations
+
+    ├── StudentManagementPanel.java    # Student management│   ├── StudentDAO.java                # Student database operations
+
+    ├── TeacherManagementPanel.java    # Teacher management│   ├── TeacherDAO.java                # Teacher database operations
+
+    ├── CourseManagementPanel.java     # Course management│   └── CourseDAO.java                 # Course database operations
+
+    ├── ProfilePanel.java              # User profile│
+
+    ├── MyCoursesPanel.java            # Student/Teacher courses view└── ui/                                # User Interface components
+
+    ├── MyTeachersPanel.java           # Student's teachers view    ├── LoginFrame.java                # Login window
+
+    └── MyStudentsPanel.java           # Teacher's students view    ├── DashboardFrame.java            # Main dashboard
+
+```    ├── StudentManagementPanel.java    # Student management UI
+
     ├── TeacherManagementPanel.java    # Teacher management UI
-    ├── CourseManagementPanel.java     # Course management UI
+
+---    ├── CourseManagementPanel.java     # Course management UI
+
     └── ProfilePanel.java              # User profile UI
-```
 
----
+## 📋 Prerequisites```
 
-## 📋 Prerequisites
 
-Before running this application, ensure you have:
 
-1. **Java Development Kit (JDK)** 
-   - Version 8 or higher
-   - Download from: https://www.oracle.com/java/technologies/downloads/
+- **Java JDK 8+**---
 
-2. **MySQL Database Server**
-   - Version 5.7 or higher
-   - Download from: https://dev.mysql.com/downloads/mysql/
+- **MySQL Server**
 
-3. **MySQL JDBC Driver** (Connector/J)
-   - Download from: https://dev.mysql.com/downloads/connector/j/
-   - Or add to classpath: `mysql-connector-java-8.0.xx.jar`
+- **MySQL Connector/J** (included: mysql-connector-j-9.5.0.jar)## 📋 Prerequisites
 
-4. **IDE (Optional but Recommended)**
-   - IntelliJ IDEA, Eclipse, NetBeans, or VS Code with Java extensions
 
----
 
-## 🚀 Installation & Setup
+---- **Java JDK 8+**
 
-### Step 1: Database Setup
+- **MySQL Server**
 
-1. **Start MySQL Server**
-   ```bash
-   # On Windows (if MySQL is in PATH)
-   mysql.exe -u root -p
-   
-   # On Mac/Linux
-   mysql -u root -p
-   ```
+## 🚀 Quick Setup- **MySQL Connector/J** (included: mysql-connector-j-9.5.0.jar)
 
-2. **Create Database and Tables**
-   ```sql
-   # Run the schema.sql file
-   source path/to/schema.sql
-   
-   # Or copy and paste the contents of schema.sql into MySQL
-   ```
 
-3. **Verify Database Creation**
-   ```sql
-   USE student_info_system;
-   SHOW TABLES;
-   SELECT * FROM users;
-   ```
 
-### Step 2: Configure Database Connection
-
-1. Open `database/DatabaseConnection.java`
-2. Update the database credentials:
-   ```java
-   private static final String URL = "jdbc:mysql://localhost:3306/student_info_system";
-   private static final String USERNAME = "root";
-   private static final String PASSWORD = "your_mysql_password"; // Update this!
-   ```
-
-### Step 3: Add MySQL JDBC Driver
-
-#### Option A: Using Command Line
-Place `mysql-connector-java-x.x.xx.jar` in your project folder and include in classpath.
-
-#### Option B: Using IDE
-- **IntelliJ IDEA**: File → Project Structure → Libraries → Add JAR
-- **Eclipse**: Right-click project → Build Path → Add External JARs
-- **VS Code**: Add to `.classpath` or use Maven/Gradle
-
----
-
-## ▶️ How to Run
-
-### Method 1: Using Command Line
+### 1. Setup Database---
 
 ```bash
-# Navigate to project directory
-cd "C:\Users\Kislay\OneDrive\Desktop\Java lab"
 
-# Compile all Java files
-javac -d bin -cp "mysql-connector-java-8.0.33.jar" Main.java database/*.java models/*.java dao/*.java ui/*.java
+# Login to MySQL## 🚀 Quick Setup
 
-# Run the application
-java -cp "bin;mysql-connector-java-8.0.33.jar" Main
-```
+mysql -u root -p
 
-### Method 2: Using IDE
+### 1. Setup Database
 
-1. Open the project in your IDE
-2. Add MySQL JDBC driver to project libraries
-3. Run `Main.java`
+# Run the schema```bash
 
-### Method 3: Using VS Code
+source setup_database.sql# Login to MySQL
 
-1. Open the project folder in VS Code
-2. Ensure Java Extension Pack is installed
-3. Press `F5` or click "Run" on `Main.java`
+```mysql -u root -p
 
----
 
-## 🔐 Default Login Credentials
 
-After setting up the database with `schema.sql`, use these credentials:
+### 2. Update Password# Run the schema
 
-| Role    | Username  | Password  |
+Edit `database/DatabaseConnection.java`:source setup_database.sql
+
+```java```
+
+private static final String PASSWORD = "your_mysql_password";
+
+```### 2. Update Password
+
+Edit `database/DatabaseConnection.java`:
+
+### 3. Compile & Run```java
+
+```bashprivate static final String PASSWORD = "your_mysql_password";
+
+# Compile```
+
+javac -d bin -cp "mysql-connector-j-9.5.0.jar" Main.java database\*.java models\*.java dao\*.java ui\*.java
+
+### 3. Compile & Run
+
+# Run```bash
+
+java -cp "bin;mysql-connector-j-9.5.0.jar" Main# Compile
+
+```javac -d bin -cp "mysql-connector-j-9.5.0.jar" Main.java database\*.java models\*.java dao\*.java ui\*.java
+
+
+
+**Or use the batch files:**# Run
+
+```bashjava -cp "bin;mysql-connector-j-9.5.0.jar" Main
+
+compile.bat  # Compile```
+
+run.bat      # Run
+
+```**Or use the batch files:**
+
+```bash
+
+---compile.bat  # Compile
+
+run.bat      # Run
+
+## 🔑 Default Login```
+
+
+
+| Role    | Username  | Password    |### Method 3: Using VS Code
+
+|---------|-----------|-------------|
+
+| Admin   | admin     | admin123    |1. Open the project folder in VS Code
+
+| Student | john.doe  | student123  |2. Ensure Java Extension Pack is installed
+
+| Teacher | dr.smith  | teacher123  |3. Press `F5` or click "Run" on `Main.java`
+
+
+
+**New students/teachers automatically get:**---
+
+- Username: email prefix (e.g., alice.wonder@school.com → alice.wonder)
+
+- Password: student123 or teacher123## 🔐 Default Login Credentials
+
+
+
+---After setting up the database with `schema.sql`, use these credentials:
+
+
+
+## 🎯 How It Works| Role    | Username  | Password  |
+
 |---------|-----------|-----------|
-| Admin   | admin     | admin123  |
-| Student | john.doe  | pass123   |
-| Teacher | dr.smith  | teach123  |
 
----
+### Architecture| Admin   | admin     | admin123  |
 
-## 🎯 System Features
+- **Presentation Layer** (`ui/`) - Swing GUI components| Student | john.doe  | pass123   |
 
-### 1. Login System
-- **File**: `LoginFrame.java`
-- Beautiful gradient background
+- **Business Logic** (`dao/`) - Database operations  | Teacher | dr.smith  | teach123  |
+
+- **Data Layer** (`models/`) - Java POJOs
+
+- **Database** (`database/`) - Connection management---
+
+
+
+### Key Features by Role## 🎯 System Features
+
+
+
+**Admin:**### 1. Login System
+
+- Full access to manage students, teachers, and courses- **File**: `LoginFrame.java`
+
+- Can add/edit/delete all records- Beautiful gradient background
+
 - Username and password authentication
-- Role-based access control
-- Error handling for invalid credentials
 
-### 2. Dashboard
-- **File**: `DashboardFrame.java`
+**Student:**- Role-based access control
+
+- View enrolled courses- Error handling for invalid credentials
+
+- View teachers
+
+- Edit own profile### 2. Dashboard
+
+- Change password- **File**: `DashboardFrame.java`
+
 - Side navigation menu
-- Welcome screen with info cards
-- User information display
-- Logout functionality
 
-### 3. Student Management
+**Teacher:**- Welcome screen with info cards
+
+- View assigned courses- User information display
+
+- View all students- Logout functionality
+
+- Edit own profile
+
+- Change password### 3. Student Management
+
 - **File**: `StudentManagementPanel.java`
-- View all students in a table
+
+---- View all students in a table
+
 - Add new student with dialog form
-- Edit existing student information
+
+## 🗄 Database Schema- Edit existing student information
+
 - Delete student records
-- Fields: Name, Email, Phone, Date of Birth, Address, Enrollment Date
 
-### 4. Teacher Management
-- **File**: `TeacherManagementPanel.java`
-- Complete teacher record management
-- Add/Edit/Delete operations
-- Fields: Name, Email, Phone, Department, Specialization, Hire Date
+**Tables:** users, students, teachers, courses, enrollments- Fields: Name, Email, Phone, Date of Birth, Address, Enrollment Date
 
-### 5. Course Management
+
+
+**Key Relationships:**### 4. Teacher Management
+
+- `users` ← `students` (1:1)- **File**: `TeacherManagementPanel.java`
+
+- `users` ← `teachers` (1:1)- Complete teacher record management
+
+- `teachers` → `courses` (1:N)- Add/Edit/Delete operations
+
+- `students` ↔ `courses` (M:N via enrollments)- Fields: Name, Email, Phone, Department, Specialization, Hire Date
+
+
+
+---### 5. Course Management
+
 - **File**: `CourseManagementPanel.java`
-- Manage course information
-- Assign teachers to courses
-- Fields: Course Code, Name, Description, Credits, Teacher
 
-### 6. Profile Management
+## 🎨 UI Design- Manage course information
+
+- Assign teachers to courses
+
+- **Color Scheme:** Blue (#3498db), Green (#2ecc71), Red (#e74c3c), Purple (#9b59b6)- Fields: Course Code, Name, Description, Credits, Teacher
+
+- **Features:** Gradient backgrounds, hover effects, modal dialogs
+
+- **Layout:** CardLayout for navigation, JTables for data display### 6. Profile Management
+
 - **File**: `ProfilePanel.java`
-- View personal information
+
+---- View personal information
+
 - Edit profile details
-- Update password
+
+## 📝 For Presentation- Update password
+
 - Role-specific information display
 
----
+**Show:**
 
-## 📚 Code Explanation
+1. Login system with role-based access---
 
-### Architecture Overview
+2. Admin managing students/teachers
 
-The application follows a **layered architecture** with clear separation of concerns:
+3. Profile editing and password change## 📚 Code Explanation
 
-1. **Presentation Layer** (`ui/` package)
-   - Handles all user interface components
-   - Uses Java Swing for GUI
-   - Displays data and captures user input
+4. Beautiful UI with gradient design
 
-2. **Business Logic Layer** (`dao/` package)
+5. Database structure and relationships### Architecture Overview
+
+
+
+**Highlight:**The application follows a **layered architecture** with clear separation of concerns:
+
+- Clean code organization with packages
+
+- DAO pattern for data access1. **Presentation Layer** (`ui/` package)
+
+- Auto user creation on add   - Handles all user interface components
+
+- Transaction-based operations   - Uses Java Swing for GUI
+
+- Role-specific dashboards   - Displays data and captures user input
+
+
+
+---2. **Business Logic Layer** (`dao/` package)
+
    - Contains Data Access Objects
-   - Implements CRUD operations
+
+## 🔧 Troubleshooting   - Implements CRUD operations
+
    - Manages database transactions
 
-3. **Data Layer** (`models/` package)
-   - Plain Old Java Objects (POJOs)
-   - Represents database entities
-   - Contains getters and setters
+**Database connection error?**
 
-4. **Database Layer** (`database/` package)
+- Check MySQL is running3. **Data Layer** (`models/` package)
+
+- Verify password in `DatabaseConnection.java`   - Plain Old Java Objects (POJOs)
+
+   - Represents database entities
+
+**Can't compile?**   - Contains getters and setters
+
+- Ensure JDK is installed
+
+- Check mysql-connector-j-9.5.0.jar is present4. **Database Layer** (`database/` package)
+
    - Manages database connections
-   - Connection pooling
-   - JDBC configuration
+
+**Login fails?**   - Connection pooling
+
+- Database setup complete? Run `setup_database.sql`   - JDBC configuration
+
+- Check users table: `SELECT * FROM users;`
 
 ### Key Classes Explained
 
+---
+
 #### 1. Main.java
-```java
+
+## 🚀 Future Enhancements```java
+
 // Entry point of the application
-// Tests database connection
-// Sets look and feel
-// Launches login window
+
+- Password encryption (BCrypt)// Tests database connection
+
+- Advanced search/filters// Sets look and feel
+
+- Grade management// Launches login window
+
+- PDF report generation```
+
+- Email notifications
+
+- Attendance tracking#### 2. DatabaseConnection.java
+
+```java
+
+---// Singleton pattern for database connection
+
+// Methods:
+
+## 📄 License// - getConnection(): Returns active connection
+
+// - closeConnection(): Closes the connection
+
+Educational project - Free to use and modify// - testConnection(): Tests if connection works
+
 ```
 
-#### 2. DatabaseConnection.java
-```java
-// Singleton pattern for database connection
-// Methods:
-// - getConnection(): Returns active connection
-// - closeConnection(): Closes the connection
-// - testConnection(): Tests if connection works
-```
+---
 
 #### 3. User.java (Model)
-```java
+
+Made with ☕ and Java```java
+
 // Represents a user in the system
 // Fields: userId, username, password, role, email
 // Used for authentication and authorization
